@@ -4,6 +4,7 @@ import { TableComponent } from './table/table.component';
 import { ItemDetailComponent } from './item-detail/item-detail.component';
 
 const routes: Routes = [
+  { path: 'detail', component: ItemDetailComponent },
   { path: 'detail/:id', component: ItemDetailComponent },
   { path: 'list', component: TableComponent },
   { path: '', redirectTo: '/list', pathMatch: 'full' }

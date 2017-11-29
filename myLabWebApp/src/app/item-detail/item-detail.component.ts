@@ -29,6 +29,8 @@ export class ItemDetailComponent {
       .subscribe(item => {
         if (item != null) {
           this.item = item;
+        } else {
+          this.item = new Item(-1, '', '', '');
         }
       });
   }
@@ -40,6 +42,11 @@ export class ItemDetailComponent {
 
   public delete() {
     this.apiService.deleteItem(this.item);
+    this.location.back();
+  }
+
+  public saveNew() {
+    this.apiService.addItem(this.item);
     this.location.back();
   }
 

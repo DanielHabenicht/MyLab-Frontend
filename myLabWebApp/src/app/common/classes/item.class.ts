@@ -1,14 +1,14 @@
 export class Item {
+  public readonly id: number;
   public name: string;
-  public id: number;
   public location: string;
-  public comment: string;
+  public comment?: string;
 
   constructor(
     id: number,
     name: string,
     location: string,
-    comment: string
+    comment: string = ''
   ) {
     this.id = id;
     this.name = name;

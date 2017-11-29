@@ -57,4 +57,8 @@ export class APIService {
     //TODO Replace by real Code
     ITEMS.splice(ITEMS.indexOf(item), 1);
   }
+
+  public addItem(item: Item): void {
+    ITEMS.push(item);
+  }
 }
