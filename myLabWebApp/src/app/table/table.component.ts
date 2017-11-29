@@ -7,4 +7,6 @@ import { Component } from '@angular/core';
 })
 export class TableComponent {
 
+  //public items: string[] = ['Test 1', 'test2'];
+
 }
