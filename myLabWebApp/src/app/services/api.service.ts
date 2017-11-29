@@ -55,6 +55,6 @@ export class APIService {
    */
   public deleteItem(item: Item): void {
     //TODO Replace by real Code
-    ITEMS.splice(item.id, 1);
+    ITEMS.splice(ITEMS.indexOf(item), 1);
   }
 }

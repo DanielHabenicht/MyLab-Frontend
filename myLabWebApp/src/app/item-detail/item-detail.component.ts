@@ -38,4 +38,9 @@ export class ItemDetailComponent {
     this.location.back();
   }
 
+  public delete() {
+    this.apiService.deleteItem(this.item);
+    this.location.back();
+  }
+
 }
