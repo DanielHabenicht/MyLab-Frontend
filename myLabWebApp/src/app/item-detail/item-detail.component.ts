@@ -13,7 +13,7 @@ import { Observable } from 'rxjs/Observable';
 })
 export class ItemDetailComponent {
 
-  public item: Observable<Item | undefined>;
+  public item: Item;
 
   constructor(
     private apiService: APIService,
@@ -23,9 +23,13 @@ export class ItemDetailComponent {
 
   }
   public ngOnInit() {
-    this.item = this.route.paramMap
-      .switchMap((params: ParamMap) =>
-        this.apiService.getItem(Number.parseInt(params.get('id') || '')));
+    this.route.paramMap.switchMap((params: ParamMap) =>
+      this.apiService.getItem(Number.parseInt(params.get('id') || '')))
+      .subscribe(item => {
+        if (item != null) {
+          this.item = item;
+        }
+      });
   }
 
 }
