@@ -1,9 +1,13 @@
 <div class="header">
-  <h1>
-    <a routerLink="/">MyLab</a>
-  </h1>
   <nav>
-    <a routerLink="/list">List</a>
+    <div class="nav-wrapper">
+      <a routerLink="/" class="brand-logo">MyLab</a>
+      <ul id="nav-mobile" class="right hide-on-med-and-down">
+        <li routerLinkActive="active">
+          <a routerLink="/list">List</a>
+        </li>
+      </ul>
+    </div>
   </nav>
 </div>
 
