@@ -3,6 +3,10 @@
     {{item.id}} - {{item.name}}
   </h4>
   <label>
+    Name
+    <input type="text" [(ngModel)]="item.name">
+  </label>
+  <label>
     Location
     <input type="text" [(ngModel)]="item.location">
   </label>
@@ -10,4 +14,5 @@
     Comment
     <input type="text" [(ngModel)]="item.comment">
   </label>
+  <button (click)="save()">Speichern</button>
 </div>

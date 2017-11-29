@@ -39,4 +39,22 @@ export class APIService {
     //TODO: Replace with real code
     //return this.baseRestService.getApiRequest('/items/' + id);
   }
+
+  /**
+   * Updates the Item on the Server.
+   * @param item Item that has changed
+   */
+  public updateItem(item: Item): void {
+    ITEMS.splice(ITEMS.indexOf(item), 1, item);
+    //TODO Replace by real Code
+  }
+
+  /**
+   * Deletes the item on the server
+   * @param item Item that should be deleted
+   */
+  public deleteItem(item: Item): void {
+    //TODO Replace by real Code
+    ITEMS.splice(item.id, 1);
+  }
 }

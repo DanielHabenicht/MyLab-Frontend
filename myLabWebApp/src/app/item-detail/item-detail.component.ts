@@ -5,6 +5,7 @@ import 'rxjs/add/operator/switchMap';
 import { APIService } from '../services/api.service';
 import { ActivatedRoute, Router, ParamMap } from '@angular/router';
 import { Observable } from 'rxjs/Observable';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'item-detail',
@@ -18,7 +19,7 @@ export class ItemDetailComponent {
   constructor(
     private apiService: APIService,
     private route: ActivatedRoute,
-    private router: Router
+    private location: Location
   ) {
 
   }
@@ -30,6 +31,11 @@ export class ItemDetailComponent {
           this.item = item;
         }
       });
+  }
+
+  public save() {
+    this.apiService.updateItem(this.item);
+    this.location.back();
   }
 
 }
