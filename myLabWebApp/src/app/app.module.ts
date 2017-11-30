@@ -7,18 +7,22 @@ import { FormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { TableComponent } from './table/table.component';
-import { ItemDetailComponent } from './item-detail/item-detail.component';
+import { ItemDetailComponent } from './items/item-detail.component';
 import { APIService } from './services/api.service';
 import { BaseRestService } from './services/baseRest.service';
 import { Http } from '@angular/http/';
 import { HttpModule } from '@angular/http/';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { CategoryComponent } from './categories/category.component';
+import { CategoriesComponent } from './categories/categories-overview.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     TableComponent,
-    ItemDetailComponent
+    ItemDetailComponent,
+    CategoryComponent,
+    CategoriesComponent
   ],
   imports: [
     BrowserModule,
