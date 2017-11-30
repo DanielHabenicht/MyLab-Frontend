@@ -12543,11 +12543,11 @@
       "hideWarningsAndErrors": true
     },
     "restore": {
-      "projectUniqueName": "C:\\Users\\dnhb\\source\\repos\\myLabDockerAPI\\myLabDockerAPI\\myLabDockerAPI.csproj",
+      "projectUniqueName": "C:\\Develop\\Repos\\MyLab\\myLabDockerAPI\\myLabDockerAPI\\myLabDockerAPI.csproj",
       "projectName": "myLabDockerAPI",
-      "projectPath": "C:\\Users\\dnhb\\source\\repos\\myLabDockerAPI\\myLabDockerAPI\\myLabDockerAPI.csproj",
+      "projectPath": "C:\\Develop\\Repos\\MyLab\\myLabDockerAPI\\myLabDockerAPI\\myLabDockerAPI.csproj",
       "packagesPath": "C:\\Users\\dnhb\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\dnhb\\source\\repos\\myLabDockerAPI\\myLabDockerAPI\\obj\\",
+      "outputPath": "C:\\Develop\\Repos\\MyLab\\myLabDockerAPI\\myLabDockerAPI\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
