@@ -5,6 +5,8 @@ import 'rxjs/add/operator/map';
 import { BaseRestService } from './baseRest.service';
 import { Item } from '../common/classes/item.class';
 import { ITEMS } from '../mocks/items.mock';
+import { Category } from '../common/classes/category.class';
+import { CATEGORIES } from '../mocks/categories.mock';
 
 /**
  * A Service to communicate with the API
@@ -25,13 +27,15 @@ export class APIService {
    * Returns all Items in an Array
    */
   public getItems(): Observable<Item[]> {
-    if (this.items != null) {
-      return this.items;
-    }
-    const obs = this.baseRestService.getApiRequest('/items').publishReplay();
-    obs.connect();
-    this.items = obs;
-    return obs;
+    //TODO Replace with real Code
+    // if (this.items != null) {
+    //   return this.items;
+    // }
+    // const obs = this.baseRestService.getApiRequest('/items').publishReplay();
+    // obs.connect();
+    // this.items = obs;
+    // return obs;
+    return Observable.of(ITEMS);
   }
 
   public getItem(id: number): Observable<Item | undefined> {
@@ -60,5 +64,15 @@ export class APIService {
 
   public addItem(item: Item): void {
     ITEMS.push(item);
+  }
+
+  public getCategories(): Observable<Category[]> {
+    //TODO Replace with real Code
+    return Observable.of(CATEGORIES);
+  }
+
+  public getCategory(id: number): Observable<Category | undefined> {
+    //TODO: Replace with real Code
+    return Observable.of(CATEGORIES.find(category => { return category.id === id; }));
   }
 }
