@@ -12,6 +12,7 @@ import { APIService } from './services/api.service';
 import { BaseRestService } from './services/baseRest.service';
 import { Http } from '@angular/http/';
 import { HttpModule } from '@angular/http/';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { HttpModule } from '@angular/http/';
     AppRoutingModule,
     HttpClientModule,
     HttpModule,
-    FormsModule
+    FormsModule,
+    NgbModule.forRoot()
   ],
   providers: [
     APIService,
