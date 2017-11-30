@@ -1,0 +1,11 @@
+C:\Users\Anne\Desktop\MyLab\myLabAPI\myLabAPI\bin\Debug\netcoreapp2.0\myLabAPI.deps.json
+C:\Users\Anne\Desktop\MyLab\myLabAPI\myLabAPI\bin\Debug\netcoreapp2.0\myLabAPI.runtimeconfig.json
+C:\Users\Anne\Desktop\MyLab\myLabAPI\myLabAPI\bin\Debug\netcoreapp2.0\myLabAPI.runtimeconfig.dev.json
+C:\Users\Anne\Desktop\MyLab\myLabAPI\myLabAPI\bin\Debug\netcoreapp2.0\myLabAPI.dll
+C:\Users\Anne\Desktop\MyLab\myLabAPI\myLabAPI\bin\Debug\netcoreapp2.0\myLabAPI.pdb
+C:\Users\Anne\Desktop\MyLab\myLabAPI\myLabAPI\obj\Debug\netcoreapp2.0\myLabAPI.csprojResolveAssemblyReference.cache
+C:\Users\Anne\Desktop\MyLab\myLabAPI\myLabAPI\obj\Debug\netcoreapp2.0\myLabAPI.csproj.CoreCompileInputs.cache
+C:\Users\Anne\Desktop\MyLab\myLabAPI\myLabAPI\obj\Debug\netcoreapp2.0\myLabAPI.AssemblyInfoInputs.cache
+C:\Users\Anne\Desktop\MyLab\myLabAPI\myLabAPI\obj\Debug\netcoreapp2.0\myLabAPI.AssemblyInfo.cs
+C:\Users\Anne\Desktop\MyLab\myLabAPI\myLabAPI\obj\Debug\netcoreapp2.0\myLabAPI.dll
+C:\Users\Anne\Desktop\MyLab\myLabAPI\myLabAPI\obj\Debug\netcoreapp2.0\myLabAPI.pdb

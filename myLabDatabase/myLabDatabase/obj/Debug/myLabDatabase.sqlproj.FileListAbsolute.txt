@@ -1,0 +1,9 @@
+C:\xampp\htdocs\MyLab\myLabDatabase\myLabDatabase\bin\Debug\myLabDatabase.dacpac
+C:\xampp\htdocs\MyLab\myLabDatabase\myLabDatabase\bin\Debug\myLabDatabase.dll
+C:\xampp\htdocs\MyLab\myLabDatabase\myLabDatabase\bin\Debug\myLabDatabase.pdb
+C:\xampp\htdocs\MyLab\myLabDatabase\myLabDatabase\obj\Debug\Model.xml
+C:\xampp\htdocs\MyLab\myLabDatabase\myLabDatabase\obj\Debug\refactor.xml
+C:\xampp\htdocs\MyLab\myLabDatabase\myLabDatabase\obj\Debug\postdeploy.sql
+C:\xampp\htdocs\MyLab\myLabDatabase\myLabDatabase\obj\Debug\predeploy.sql
+C:\xampp\htdocs\MyLab\myLabDatabase\myLabDatabase\obj\Debug\myLabDatabase.dll
+C:\xampp\htdocs\MyLab\myLabDatabase\myLabDatabase\obj\Debug\myLabDatabase.pdb
