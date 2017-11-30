@@ -25,13 +25,15 @@ export class APIService {
    * Returns all Items in an Array
    */
   public getItems(): Observable<Item[]> {
-    if (this.items != null) {
-      return this.items;
-    }
-    const obs = this.baseRestService.getApiRequest('/items').publishReplay();
-    obs.connect();
-    this.items = obs;
-    return obs;
+    //TODO Replace with real Code
+    // if (this.items != null) {
+    //   return this.items;
+    // }
+    // const obs = this.baseRestService.getApiRequest('/items').publishReplay();
+    // obs.connect();
+    // this.items = obs;
+    // return obs;
+    return Observable.of(ITEMS);
   }
 
   public getItem(id: number): Observable<Item | undefined> {
