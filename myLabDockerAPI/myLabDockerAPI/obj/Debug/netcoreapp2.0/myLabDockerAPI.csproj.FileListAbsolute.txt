@@ -1,0 +1,11 @@
+C:\Users\dnhb\source\repos\myLabDockerAPI\myLabDockerAPI\bin\Debug\netcoreapp2.0\myLabDockerAPI.deps.json
+C:\Users\dnhb\source\repos\myLabDockerAPI\myLabDockerAPI\bin\Debug\netcoreapp2.0\myLabDockerAPI.runtimeconfig.json
+C:\Users\dnhb\source\repos\myLabDockerAPI\myLabDockerAPI\bin\Debug\netcoreapp2.0\myLabDockerAPI.runtimeconfig.dev.json
+C:\Users\dnhb\source\repos\myLabDockerAPI\myLabDockerAPI\bin\Debug\netcoreapp2.0\myLabDockerAPI.dll
+C:\Users\dnhb\source\repos\myLabDockerAPI\myLabDockerAPI\bin\Debug\netcoreapp2.0\myLabDockerAPI.pdb
+C:\Users\dnhb\source\repos\myLabDockerAPI\myLabDockerAPI\obj\Debug\netcoreapp2.0\myLabDockerAPI.csprojResolveAssemblyReference.cache
+C:\Users\dnhb\source\repos\myLabDockerAPI\myLabDockerAPI\obj\Debug\netcoreapp2.0\myLabDockerAPI.csproj.CoreCompileInputs.cache
+C:\Users\dnhb\source\repos\myLabDockerAPI\myLabDockerAPI\obj\Debug\netcoreapp2.0\myLabDockerAPI.AssemblyInfoInputs.cache
+C:\Users\dnhb\source\repos\myLabDockerAPI\myLabDockerAPI\obj\Debug\netcoreapp2.0\myLabDockerAPI.AssemblyInfo.cs
+C:\Users\dnhb\source\repos\myLabDockerAPI\myLabDockerAPI\obj\Debug\netcoreapp2.0\myLabDockerAPI.dll
+C:\Users\dnhb\source\repos\myLabDockerAPI\myLabDockerAPI\obj\Debug\netcoreapp2.0\myLabDockerAPI.pdb

@@ -1,0 +1,27 @@
+networks:
+  default:
+    external:
+      name: nat
+services:
+  mylabdockerapi:
+    build:
+      args:
+        source: obj/Docker/empty/
+      context: C:\Users\dnhb\source\repos\myLabDockerAPI\myLabDockerAPI
+      dockerfile: Dockerfile
+    entrypoint: tail -f /dev/null
+    environment:
+      ASPNETCORE_ENVIRONMENT: Development
+      DOTNET_USE_POLLING_FILE_WATCHER: '1'
+    image: mylabdockerapi:dev
+    labels:
+      com.microsoft.visualstudio.debuggee.killprogram: /bin/bash -c "if PID=$$(pidof
+        -x dotnet); then kill $$PID; fi"
+      com.microsoft.visualstudio.debuggee.program: dotnet
+      com.microsoft.visualstudio.debuggee.workingdirectory: /app
+    ports:
+    - 80/tcp
+    volumes:
+    - C:\Users\dnhb\source\repos\myLabDockerAPI\myLabDockerAPI:/app:rw
+    - C:\Users\dnhb\vsdbg:/remote_debugger:ro
+version: '3.0'

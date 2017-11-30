@@ -1,0 +1,15 @@
+networks:
+  default:
+    external:
+      name: nat
+services:
+  mylabdockerapi:
+    build:
+      context: C:\Users\dnhb\source\repos\myLabDockerAPI\myLabDockerAPI
+      dockerfile: Dockerfile
+    environment:
+      ASPNETCORE_ENVIRONMENT: Development
+    image: mylabdockerapi
+    ports:
+    - 80/tcp
+version: '3.0'
