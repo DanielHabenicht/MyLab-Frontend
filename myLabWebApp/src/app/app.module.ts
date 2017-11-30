@@ -15,11 +15,13 @@ import { HttpModule } from '@angular/http/';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { CategoryComponent } from './categories/category.component';
 import { CategoriesComponent } from './categories/categories-overview.component';
+import { ItemsOverviewComponent } from './items/items-overview.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     TableComponent,
+    ItemsOverviewComponent,
     ItemDetailComponent,
     CategoryComponent,
     CategoriesComponent
