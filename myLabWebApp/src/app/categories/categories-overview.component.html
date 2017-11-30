@@ -1,3 +1,8 @@
-<custom-table>
+<p-dataTable #dt [value]="categories">
+  <p-column field="id" header="Id"></p-column>
+  <p-column field="name" header="Name"></p-column>
+  <p-column field="comment" header="Kommentar"></p-column>
+  <p-column field="deviceCount" header="Anzahl"></p-column>
 
-</custom-table>
+</p-dataTable>
+<button type="button" pButton icon="fa-file-o" iconPos="left" label="CSV" (click)="dt.exportCSV()"></button>
