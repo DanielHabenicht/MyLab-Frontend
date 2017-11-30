@@ -21,7 +21,6 @@ import { DataTableModule, SharedModule } from 'primeng/primeng';
 @NgModule({
   declarations: [
     AppComponent,
-    TableComponent,
     ItemsOverviewComponent,
     ItemDetailComponent,
     CategoryComponent,
