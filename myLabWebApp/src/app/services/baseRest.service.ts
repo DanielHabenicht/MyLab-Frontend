@@ -1,9 +1,10 @@
 
 import { Observable } from 'rxjs/Observable';
 import { Injectable } from '@angular/core';
-import { Http, Headers } from '@angular/http';
-import 'rxjs/add/operator/map';
+import { Http, Headers, Response } from '@angular/http';
 
+import 'rxjs/add/operator/catch';
+import 'rxjs/add/operator/map';
 /**
  * A Service to do all restcall's
  *
@@ -13,7 +14,7 @@ import 'rxjs/add/operator/map';
 @Injectable()
 export class BaseRestService {
 
-  private apiUrl: string = 'http:/localhost:4200/api';
+  private baseURL: string = '/api';
 
   constructor(
     private http: Http
@@ -24,7 +25,7 @@ export class BaseRestService {
    * @param path The path appended to the URL without '/'
    */
   public getApiRequest(path: string): Observable<any> {
-    return this.runRestQuery(this.apiUrl + path);
+    return this.runRestQuery(this.baseURL + path);
   }
 
   private runRestQuery(url: string): Observable<any> {
@@ -32,6 +33,9 @@ export class BaseRestService {
       Accept: 'application/json; odata=verbose'
     });
     return this.http.get(url, { headers: header })
-      .map(data => data.json());
+      .map(data => data.json())
+      .catch((err: Response) => {
+        return Observable.throw(err.json());
+      });
   }
 }

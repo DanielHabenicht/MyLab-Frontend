@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { Item } from '../common/classes/item.class';
-import { ITEMS } from '../mocks/items.mock';
+import { Device } from '../common/classes/device.class';
+import { DEVICES } from '../mocks/devices.mock';
 import 'rxjs/add/operator/switchMap';
 import { APIService } from '../services/api.service';
 import { ActivatedRoute, Router, ParamMap } from '@angular/router';
@@ -8,13 +8,13 @@ import { Observable } from 'rxjs/Observable';
 import { Location } from '@angular/common';
 
 @Component({
-  selector: 'item-detail',
-  templateUrl: './item-detail.component.html',
-  styleUrls: ['./item-detail.component.scss']
+  selector: 'device-detail',
+  templateUrl: './device-detail.component.html',
+  styleUrls: ['./device-detail.component.scss']
 })
-export class ItemDetailComponent {
+export class DeviceDetailComponent {
 
-  public item: Item;
+  public device: Device;
 
   constructor(
     private apiService: APIService,
@@ -25,28 +25,28 @@ export class ItemDetailComponent {
   }
   public ngOnInit() {
     this.route.paramMap.switchMap((params: ParamMap) =>
-      this.apiService.getItem(Number.parseInt(params.get('id') || '')))
-      .subscribe(item => {
-        if (item != null) {
-          this.item = item;
+      this.apiService.getDevice(Number.parseInt(params.get('id') || '')))
+      .subscribe(device => {
+        if (device != null) {
+          this.device = device;
         } else {
-          this.item = new Item(-1, '', '', '');
+          this.device = new Device(-1, '', 0, '', '', '', '');
         }
       });
   }
 
   public save() {
-    this.apiService.updateItem(this.item);
+    this.apiService.updateDevice(this.device);
     this.location.back();
   }
 
   public delete() {
-    this.apiService.deleteItem(this.item);
+    this.apiService.deleteDevice(this.device);
     this.location.back();
   }
 
   public saveNew() {
-    this.apiService.addItem(this.item);
+    this.apiService.addDevice(this.device);
     this.location.back();
   }
 
