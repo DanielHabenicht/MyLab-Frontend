@@ -20,7 +20,7 @@ namespace myLabDockerAPI.Controllers
 
             if (_context.DeviceItems.Count() == 0)
             {
-                _context.DeviceItems.Add(new DeviceItem { Name = "Item1" });
+                _context.DeviceItems.Add(new DeviceItem { Title = "Item1" });
                 _context.SaveChanges();
             }
         }
