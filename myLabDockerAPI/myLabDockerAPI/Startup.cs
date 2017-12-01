@@ -10,7 +10,7 @@ using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using Microsoft.EntityFrameworkCore;
 using myLabDockerAPI.Data;
-
+using System.IO;
 
 namespace myLabDockerAPI
 {
@@ -38,7 +38,18 @@ namespace myLabDockerAPI
                 app.UseDeveloperExceptionPage();
             }
 
-            app.UseMvc();
+            app.Use(async (context, next) => {
+                await next();
+                if (context.Response.StatusCode == 404 && !Path.HasExtension(context.Request.Path.Value) &&
+                   !context.Request.Path.Value.StartsWith("/api/"))
+                {
+                    context.Request.Path = "/index.html";
+                    await next();
+                }
+            });
+            app.UseMvcWithDefaultRoute();
+            app.UseDefaultFiles();
+            app.UseStaticFiles();
         }
     }
 }
