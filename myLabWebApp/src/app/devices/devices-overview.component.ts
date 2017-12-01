@@ -11,8 +11,10 @@ import { APIService } from '../services/api.service';
 })
 export class DevicesOverviewComponent {
 
-  public devices
-  : Device[];
+  public devices : Device[];
+  public selectedDevices: Device[];
+  public loading: boolean = true;
+  public multiselect: boolean = false;
 
   constructor(
     private apiService: APIService
@@ -20,10 +22,22 @@ export class DevicesOverviewComponent {
     //TODO Replace with real API
     this.apiService.getDevices().subscribe(devices => {
       this.devices = devices;
+      this.loading = false;
     },
-  error => {
+    error => {
     console.log('Errror here');
-  });
+    });
   }
 
+  public isPaging(): boolean {
+    if (this.devices != null) {
+      return this.devices.length > 20;
+    }else {
+      return false;
+    }
+  }
+
+  public toggleMultiselect() {
+    this.multiselect = !this.multiselect;
+  }
 }
