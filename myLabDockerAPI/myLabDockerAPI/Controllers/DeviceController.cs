@@ -12,22 +12,22 @@ namespace myLabDockerAPI.Controllers
     [Route("api/[controller]")]
     public class DeviceController : Controller
     {
-        private readonly DeviceContext _context;
+        private readonly InventoryContext _context;
 
-        public DeviceController(DeviceContext context)
+        public DeviceController(InventoryContext context)
         {
             _context = context;
 
             if (_context.DeviceItems.Count() == 0)
             {
-                _context.DeviceItems.Add(new DeviceItem { Title = "Item1" });
+                _context.DeviceItems.Add(new Device { Title = "Item1" });
                 _context.SaveChanges();
             }
         }
 
         // GET: api/device
         [HttpGet]
-        public IEnumerable<DeviceItem> GetAll()
+        public IEnumerable<Device> GetAll()
         {
             return _context.DeviceItems.ToList();
         }

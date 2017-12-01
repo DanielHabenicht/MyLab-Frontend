@@ -5,11 +5,11 @@ using System.Threading.Tasks;
 
 namespace myLabDockerAPI.Models
 {
-    public class DeviceItem
+    public class Device
     {
         public long Id { get; set; }
         public string Title { get; set; }
-        public string Inventoryid { get; set; }
+        public string InventoryNumber { get; set; }
         public string Type { get; set; }
         public string Location { get; set; }
         public string Comment { get; set; }

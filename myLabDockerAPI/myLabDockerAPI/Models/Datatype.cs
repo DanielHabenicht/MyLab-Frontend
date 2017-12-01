@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace myLabAPI.Models
+namespace myLabDockerAPI.Models
 {
-    public class Type
+    public class Datatype
     {
         public long Id { get; set; }
-        public string Attribute { get; set; }
-    }
+        public string Title { get; set; }
+}
 }

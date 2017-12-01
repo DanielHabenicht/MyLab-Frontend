@@ -5,10 +5,9 @@ using System.Threading.Tasks;
 
 namespace myLabDockerAPI.Models
 {
-    public class AttributeItem
+    public class Laboratory
     {
         public long Id { get; set; }
         public string Title { get; set; }
-        public string Datatype { get; set; }
     }
 }
