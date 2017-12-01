@@ -9,8 +9,8 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using Microsoft.EntityFrameworkCore;
-using myLabDockerAPI.Models;
-
+using myLabDockerAPI.Data;
+using System.IO;
 
 namespace myLabDockerAPI
 {
@@ -26,7 +26,7 @@ namespace myLabDockerAPI
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddDbContext<InventoryContext>(opt => opt.UseInMemoryDatabase("DeviceList"));
+            services.AddDbContext<MyLabContext>(opt => opt.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
             services.AddMvc();
         }
 
@@ -38,7 +38,18 @@ namespace myLabDockerAPI
                 app.UseDeveloperExceptionPage();
             }
 
-            app.UseMvc();
+            app.Use(async (context, next) => {
+                await next();
+                if (context.Response.StatusCode == 404 && !Path.HasExtension(context.Request.Path.Value) &&
+                   !context.Request.Path.Value.StartsWith("/api/"))
+                {
+                    context.Request.Path = "/index.html";
+                    await next();
+                }
+            });
+            app.UseMvcWithDefaultRoute();
+            app.UseDefaultFiles();
+            app.UseStaticFiles();
         }
     }
 }

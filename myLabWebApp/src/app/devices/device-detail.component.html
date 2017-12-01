@@ -1,0 +1,23 @@
+<div class="container">
+  <h4 *ngIf="device.id >= 0">
+    device - {{device.id}}
+  </h4>
+  <h4 *ngIf="device.id == -1">
+    device neu anlegen:
+  </h4>
+  <label>
+    Name
+    <input type="text" [(ngModel)]="device.title">
+  </label>
+  <label>
+    Location
+    <input type="text" [(ngModel)]="device.location">
+  </label>
+  <label>
+    Comment
+    <input type="text" [(ngModel)]="device.comment">
+  </label>
+  <button *ngIf="device.id >= 0" class="waves-effect waves-light btn" (click)="save()">Save</button>
+  <button *ngIf="device.id >= 0" class="waves-effect waves-light btn" (click)="delete()">Delete</button>
+  <button *ngIf="device.id == -1" class="waves-effect waves-light btn" (click)="saveNew()">Anlegen</button>
+</div>

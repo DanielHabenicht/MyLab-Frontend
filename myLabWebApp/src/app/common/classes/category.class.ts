@@ -1,4 +1,4 @@
-import { combineAll } from "rxjs/operator/combineAll";
+import { combineAll } from 'rxjs/operator/combineAll';
 
 export class Category {
   public id: number;

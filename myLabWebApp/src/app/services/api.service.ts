@@ -1,13 +1,14 @@
 import { Observable, Observer } from 'rxjs';
 import { Injectable } from '@angular/core';
 import { Http, Headers } from '@angular/http';
-import 'rxjs/add/operator/map';
 import { BaseRestService } from './baseRest.service';
-import { Item } from '../common/classes/item.class';
-import { ITEMS } from '../mocks/items.mock';
+import { Device } from '../common/classes/device.class';
+import { DEVICES } from '../mocks/devices.mock';
 import { Category } from '../common/classes/category.class';
 import { CATEGORIES } from '../mocks/categories.mock';
 
+import 'rxjs/add/operator/map';
+import 'rxjs/add/operator/publishReplay';
 /**
  * A Service to communicate with the API
  *
@@ -17,53 +18,53 @@ import { CATEGORIES } from '../mocks/categories.mock';
 @Injectable()
 export class APIService {
 
-  public items: Observable<Item[]>;
+  public devices: Observable<Device[]>;
 
   constructor(
     private baseRestService: BaseRestService
   ) { }
 
   /**
-   * Returns all Items in an Array
+   * Returns all devices in an Array
    */
-  public getItems(): Observable<Item[]> {
+  public getDevices(): Observable<Device[]> {
     //TODO Replace with real Code
-    // if (this.items != null) {
-    //   return this.items;
-    // }
-    // const obs = this.baseRestService.getApiRequest('/items').publishReplay();
-    // obs.connect();
-    // this.items = obs;
-    // return obs;
-    return Observable.of(ITEMS);
+    if (this.devices != null) {
+      return this.devices;
+    }
+    const obs = this.baseRestService.getApiRequest('/device').publishReplay();
+    obs.connect();
+    this.devices = obs;
+    return obs;
+    //return Observable.of(deviceS);
   }
 
-  public getItem(id: number): Observable<Item | undefined> {
-    return Observable.of(ITEMS.find(item => { return item.id === id; }));
+  public getDevice(id: number): Observable<Device | undefined> {
+    return Observable.of(DEVICES.find(device => { return device.id === id; }));
     //TODO: Replace with real code
-    //return this.baseRestService.getApiRequest('/items/' + id);
+    //return this.baseRestService.getApiRequest('/devices/' + id);
   }
 
   /**
-   * Updates the Item on the Server.
-   * @param item Item that has changed
+   * Updates the device on the Server.
+   * @param device device that has changed
    */
-  public updateItem(item: Item): void {
-    ITEMS.splice(ITEMS.indexOf(item), 1, item);
+  public updateDevice(device: Device): void {
+    DEVICES.splice(DEVICES.indexOf(device), 1, device);
     //TODO Replace by real Code
   }
 
   /**
-   * Deletes the item on the server
-   * @param item Item that should be deleted
+   * Deletes the device on the server
+   * @param device device that should be deleted
    */
-  public deleteItem(item: Item): void {
+  public deleteDevice(device: Device): void {
     //TODO Replace by real Code
-    ITEMS.splice(ITEMS.indexOf(item), 1);
+    DEVICES.splice(DEVICES.indexOf(device), 1);
   }
 
-  public addItem(item: Item): void {
-    ITEMS.push(item);
+  public addDevice(device: Device): void {
+    DEVICES.push(device);
   }
 
   public getCategories(): Observable<Category[]> {
