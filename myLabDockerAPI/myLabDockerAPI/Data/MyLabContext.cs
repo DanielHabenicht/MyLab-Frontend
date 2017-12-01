@@ -3,22 +3,23 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
+using myLabDockerAPI.Models;
 
-namespace myLabDockerAPI.Models
+namespace myLabDockerAPI.Data
 {
-    public class InventoryContext : DbContext
+    public class MyLabContext : DbContext
     {
-        public InventoryContext(DbContextOptions<InventoryContext> options)
+        public MyLabContext(DbContextOptions<MyLabContext> options)
             : base(options)
         {
         }
 
-        public DbSet<Device> DeviceItems { get; set; }
+        public DbSet<Device> Devices { get; set; }
         public DbSet<Category> Categories { get; set; }
         public DbSet<Datatype> Datatypes { get; set; }
         public DbSet<DeviceAttribute> DeviceAttributes { get; set; }
         public DbSet<DeviceAttribute_Category_Relation> DeviceAttribute_Category_Relations { get; set; }
-        public DbSet<File> FIless { get; set; }
+        public DbSet<File> Files { get; set; }
         public DbSet<Laboratory> Laboratories { get; set; }
         public DbSet<NumberValue> NumberValues { get; set; }
         public DbSet<RangeValue> RangeValues { get; set; }

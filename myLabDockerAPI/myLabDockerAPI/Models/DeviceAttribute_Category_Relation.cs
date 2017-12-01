@@ -7,6 +7,7 @@ namespace myLabDockerAPI.Models
 {
     public class DeviceAttribute_Category_Relation
     {
+        public int Id { get; set; }
         public long CategoryId { get; set; }
         public long DeviceAttributeId { get; set; }
 

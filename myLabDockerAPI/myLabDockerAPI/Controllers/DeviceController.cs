@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using myLabDockerAPI.Data;
 using myLabDockerAPI.Models;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
@@ -12,15 +13,15 @@ namespace myLabDockerAPI.Controllers
     [Route("api/[controller]")]
     public class DeviceController : Controller
     {
-        private readonly InventoryContext _context;
+        private readonly MyLabContext _context;
 
-        public DeviceController(InventoryContext context)
+        public DeviceController(MyLabContext context)
         {
             _context = context;
 
-            if (_context.DeviceItems.Count() == 0)
+            if (_context.Devices.Count() == 0)
             {
-                _context.DeviceItems.Add(new Device { Title = "Item1" });
+                _context.Devices.Add(new Device { Title = "Item1" });
                 _context.SaveChanges();
             }
         }
@@ -29,14 +30,14 @@ namespace myLabDockerAPI.Controllers
         [HttpGet]
         public IEnumerable<Device> GetAll()
         {
-            return _context.DeviceItems.ToList();
+            return _context.Devices.ToList();
         }
 
         // GET: api/device/{id}
         [HttpGet("{id}", Name = "GetDevice")]
         public IActionResult GetById(long id)
         {
-            var item = _context.DeviceItems.FirstOrDefault(t => t.Id == id);
+            var item = _context.Devices.FirstOrDefault(t => t.Id == id);
             if (item == null)
             {
                 return NotFound();

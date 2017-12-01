@@ -9,7 +9,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using Microsoft.EntityFrameworkCore;
-using myLabDockerAPI.Models;
+using myLabDockerAPI.Data;
 
 
 namespace myLabDockerAPI
@@ -26,7 +26,7 @@ namespace myLabDockerAPI
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddDbContext<InventoryContext>(opt => opt.UseInMemoryDatabase("DeviceList"));
+            services.AddDbContext<MyLabContext>(opt => opt.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
             services.AddMvc();
         }
 
