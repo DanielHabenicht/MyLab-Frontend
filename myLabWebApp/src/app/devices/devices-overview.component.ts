@@ -1,3 +1,5 @@
+import { Message } from 'primeng/primeng';
+import { MessageService } from 'primeng/components/common/messageservice';
 import { Component } from '@angular/core';
 import { Device } from '../common/classes/device.class';
 import { DEVICES } from '../mocks/devices.mock';
@@ -17,7 +19,8 @@ export class DevicesOverviewComponent {
   public multiselect: boolean = false;
 
   constructor(
-    private apiService: APIService
+    private apiService: APIService,
+    private messageService: MessageService
   ) {
     //TODO Replace with real API
     this.apiService.getDevices().subscribe(devices => {
@@ -25,7 +28,13 @@ export class DevicesOverviewComponent {
       this.loading = false;
     },
     error => {
-    console.log('Errror here');
+      this.messageService.add(
+        {
+          severity: 'error',
+      summary: 'Keine Verbindung zum Server',
+      detail: 'Die Anwendung konnte keine Inventargegenstände abrufen'
+    }
+  );
     });
   }
 
