@@ -20,7 +20,8 @@ import { CategoriesComponent } from './categories/categories-overview.component'
 //Everything from Prime NG
 import { DataTableModule, SharedModule } from 'primeng/primeng';
 import { GrowlModule } from 'primeng/primeng';
-import {MessageService} from 'primeng/components/common/messageservice';
+import { MessageService } from 'primeng/components/common/messageservice';
+import { InputTextModule } from 'primeng/primeng';
 
 //Other NPM Packages
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
