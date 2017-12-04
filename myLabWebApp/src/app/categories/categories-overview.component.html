@@ -1,4 +1,4 @@
-<p-dataTable #dt [value]="categories">
+<p-dataTable #dt [value]="categories" (onRowClick)="onRowClick($event)">
   <p-column field="id" header="Id"></p-column>
   <p-column field="name" header="Name"></p-column>
   <p-column field="comment" header="Kommentar"></p-column>

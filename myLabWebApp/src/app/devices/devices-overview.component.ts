@@ -5,6 +5,7 @@ import { Device } from '../common/classes/device.class';
 import { DEVICES } from '../mocks/devices.mock';
 import { Router } from '@angular/router';
 import { APIService } from '../services/api.service';
+import { Event } from '@angular/router/src/events';
 
 @Component({
   selector: 'devices-overview',
@@ -13,36 +14,45 @@ import { APIService } from '../services/api.service';
 })
 export class DevicesOverviewComponent {
 
-  public devices : Device[];
+  public devices: Device[];
   public selectedDevices: Device[];
   public loading: boolean = true;
   public multiselect: boolean = false;
 
   constructor(
     private apiService: APIService,
-    private messageService: MessageService
+    private messageService: MessageService,
+    private router: Router
   ) {
     //TODO Replace with real API
     this.apiService.getDevices().subscribe(devices => {
       this.devices = devices;
       this.loading = false;
     },
-    error => {
-      this.messageService.add(
-        {
-          severity: 'error',
-      summary: 'Keine Verbindung zum Server',
-      detail: 'Die Anwendung konnte keine Inventargegenstände abrufen'
-    }
-  );
-    });
+      error => {
+        this.messageService.add(
+          {
+            severity: 'error',
+            summary: 'Keine Verbindung zum Server',
+            detail: 'Die Anwendung konnte keine Inventargegenstände abrufen'
+          }
+        );
+      });
   }
 
   public isPaging(): boolean {
     if (this.devices != null) {
       return this.devices.length > 20;
-    }else {
+    } else {
       return false;
+    }
+  }
+
+  public onRowClick(event: any): void {
+    if (this.multiselect) {
+      return;
+    } else {
+      this.router.navigate(['/device/' + event.data.id]);
     }
   }
 
