@@ -1,18 +1,18 @@
 <div class="container">
   <h4 *ngIf="category.id >= 0">
-    Kategorie - {{category.id}}
+    Kategorie - {{category.title}}: {{category.deviceCount}}
   </h4>
   <h4 *ngIf="category.id == -1">
     Kategorie neu anlegen:
   </h4>
-  <label>
-    Name
-    <input type="text" [(ngModel)]="category.name">
-  </label>
-  <label>
-    Comment
-    <input type="text" [(ngModel)]="category.comment">
-  </label>
+  <span class="ui-float-label">
+    <input id="float-input" type="text" size="30" [(ngModel)]="category.title" pInputText>
+    <label for="float-input">Titel</label>
+  </span>
+  <span class="ui-float-label">
+    <input id="float-input" type="text" size="30" [(ngModel)]="category.comment" pInputText>
+    <label for="float-input">Kommentar</label>
+  </span>
   <button *ngIf="category.id >= 0" class="waves-effect waves-light btn" (click)="save()">Save</button>
   <button *ngIf="category.id >= 0" class="waves-effect waves-light btn" (click)="delete()">Delete</button>
   <button *ngIf="category.id == -1" class="waves-effect waves-light btn" (click)="saveNew()">Anlegen</button>

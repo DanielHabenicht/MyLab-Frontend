@@ -27,7 +27,7 @@ export class CategoryComponent {
         if (category != null) {
           this.category = category;
         } else {
-          this.category = new Category(-1, '', '', 4);
+          this.category = new Category(-1, '', '', 4, false, 0);
         }
       });
   }

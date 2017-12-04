@@ -6,9 +6,9 @@ import { DeviceDetailComponent } from './devices/device-detail.component';
 import { DevicesOverviewComponent } from './devices/devices-overview.component';
 
 const routes: Routes = [
-  { path: 'detail', component: DeviceDetailComponent },
-  { path: 'detail/:id', component: DeviceDetailComponent },
-  { path: 'list', component: DevicesOverviewComponent },
+  { path: 'device', component: DeviceDetailComponent },
+  { path: 'device/:id', component: DeviceDetailComponent },
+  { path: 'devices', component: DevicesOverviewComponent },
   { path: 'categories', component: CategoriesComponent },
   { path: 'category', component: CategoryComponent },
   { path: 'category/:id', component: CategoryComponent },

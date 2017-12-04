@@ -5,6 +5,7 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve --proxy-config proxy.config.json --aot",
+    "start-work": "ng serve --proxy-config proxy.config.json --aot --output-path dist/",
     "build": "ng build --prod",
     "build-prod": "ng build --prod --build-optimizer --output-path dist/ ",
     "test": "ng test",

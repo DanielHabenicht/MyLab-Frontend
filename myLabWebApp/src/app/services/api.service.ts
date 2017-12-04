@@ -29,14 +29,14 @@ export class APIService {
    */
   public getDevices(): Observable<Device[]> {
     //TODO Replace with real Code
-    if (this.devices != null) {
-      return this.devices;
-    }
-    const obs = this.baseRestService.getApiRequest('/device').publishReplay();
-    obs.connect();
-    this.devices = obs;
-    return obs;
-    //return Observable.of(deviceS);
+    // if (this.devices != null) {
+    //   return this.devices;
+    // }
+    // const obs = this.baseRestService.getApiRequest('/device').publishReplay();
+    // obs.connect();
+    // this.devices = obs;
+    // return obs;
+    return Observable.of(DEVICES);
   }
 
   public getDevice(id: number): Observable<Device | undefined> {

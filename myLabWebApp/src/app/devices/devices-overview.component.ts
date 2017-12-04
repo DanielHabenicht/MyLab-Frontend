@@ -1,8 +1,11 @@
+import { Message } from 'primeng/primeng';
+import { MessageService } from 'primeng/components/common/messageservice';
 import { Component } from '@angular/core';
 import { Device } from '../common/classes/device.class';
 import { DEVICES } from '../mocks/devices.mock';
 import { Router } from '@angular/router';
 import { APIService } from '../services/api.service';
+import { Event } from '@angular/router/src/events';
 
 @Component({
   selector: 'devices-overview',
@@ -11,29 +14,45 @@ import { APIService } from '../services/api.service';
 })
 export class DevicesOverviewComponent {
 
-  public devices : Device[];
+  public devices: Device[];
   public selectedDevices: Device[];
   public loading: boolean = true;
   public multiselect: boolean = false;
 
   constructor(
-    private apiService: APIService
+    private apiService: APIService,
+    private messageService: MessageService,
+    private router: Router
   ) {
     //TODO Replace with real API
     this.apiService.getDevices().subscribe(devices => {
       this.devices = devices;
       this.loading = false;
     },
-    error => {
-    console.log('Errror here');
-    });
+      error => {
+        this.messageService.add(
+          {
+            severity: 'error',
+            summary: 'Keine Verbindung zum Server',
+            detail: 'Die Anwendung konnte keine Inventargegenstände abrufen'
+          }
+        );
+      });
   }
 
   public isPaging(): boolean {
     if (this.devices != null) {
       return this.devices.length > 20;
-    }else {
+    } else {
       return false;
+    }
+  }
+
+  public onRowClick(event: any): void {
+    if (this.multiselect) {
+      return;
+    } else {
+      this.router.navigate(['/device/' + event.data.id]);
     }
   }
 
