@@ -44,5 +44,20 @@ namespace myLabDockerAPI.Controllers
             }
             return new ObjectResult(item);
         }
+
+        // POST: api/device
+        [HttpPost]
+        public IActionResult Create([FromBody] Device device)
+        {
+            if (device == null)
+            {
+                return BadRequest();
+            }
+
+            _context.Devices.Add(device);
+            _context.SaveChanges();
+
+            return CreatedAtRoute("GetDevice", new { id = device.Id }, device);
+        }
     }
 }
