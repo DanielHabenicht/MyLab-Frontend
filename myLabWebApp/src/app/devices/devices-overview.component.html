@@ -1,5 +1,6 @@
-<div [ngSwitch]="multiselect">
-  <input #search type="text" placeholder="Search">
+<div [ngSwitch]="multiselect" class="ui-md-offset-1 ui-md-10">
+  <input #search type="text" placeholder="Suche">
+  <p-chips [(ngModel)]="chips"></p-chips>
   <ng-template [ngSwitchCase]="true">
     <p-dataTable [value]="devices" [rows]="20" [paginator]="isPaging()" [sortMode]="'multiple'" [(selection)]="selectedDevices"
       dataKey="id" [loading]="loading" loadingIcon="fa-spinner" [globalFilter]="search" [resizableColumns]="true" #dt>
@@ -31,5 +32,5 @@
     </p-dataTable>
     <button type="button" pButton icon="fa-file-o" iconPos="left" label="CSV" (click)="dt.exportCSV()"></button>
   </ng-template>
+  <button pButton type="button" (click)="toggleMultiselect()" label="Bulk Mode"></button>
 </div>
-<button pButton type="button" (click)="toggleMultiselect()" label="Bulk Mode"></button>
