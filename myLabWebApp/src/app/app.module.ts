@@ -18,7 +18,7 @@ import { CategoryComponent } from './categories/category.component';
 import { CategoriesComponent } from './categories/categories-overview.component';
 
 //Everything from Prime NG
-import { DataTableModule, SharedModule } from 'primeng/primeng';
+import { DataTableModule, SharedModule, ChipsModule, AutoCompleteModule } from 'primeng/primeng';
 import { GrowlModule } from 'primeng/primeng';
 import { MessageService } from 'primeng/components/common/messageservice';
 import { InputTextModule } from 'primeng/primeng';
@@ -47,6 +47,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     GrowlModule,
     InputTextModule,
     ButtonModule,
+    ChipsModule,
+    AutoCompleteModule,
     NgbModule.forRoot()
   ],
   providers: [
