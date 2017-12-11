@@ -18,6 +18,12 @@ namespace myLabDockerAPI.Controllers
         public DeviceController(MyLabContext context)
         {
             _context = context;
+
+            if (_context.Devices.Count() == 0)
+            {
+                _context.Devices.Add(new Device { Title = "Item1" });
+                _context.SaveChanges();
+            }
         }
 
         // GET: api/device
@@ -39,7 +45,6 @@ namespace myLabDockerAPI.Controllers
             return new ObjectResult(item);
         }
 
-        // Add a new Device
         // POST: api/device
         [HttpPost]
         public IActionResult Create([FromBody] Device device)
@@ -53,34 +58,6 @@ namespace myLabDockerAPI.Controllers
             _context.SaveChanges();
 
             return CreatedAtRoute("GetDevice", new { id = device.Id }, device);
-        }
-
-        // Update a device
-        // PUT: api/device
-        [HttpPut("{id}")]
-        public IActionResult Update(long id, [FromBody] Device device)
-        {
-            if (device == null || device.Id != id)
-            {
-                return BadRequest();
-            }
-
-            var item = _context.Devices.FirstOrDefault(d => d.Id == id);
-            if(item == null)
-            {
-                return NotFound();
-            }
-
-            item.InventoryNumber = device.InventoryNumber;
-            item.Location = device.Location;
-            item.State = device.State;
-            item.Title = device.Title;
-            item.Type = device.Type;
-            item.Comment = device.Comment;
-
-            _context.Devices.Update(item);
-            _context.SaveChanges();
-            return new NoContentResult();
         }
     }
 }

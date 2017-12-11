@@ -24,12 +24,5 @@ namespace myLabDockerAPI.Data
         public DbSet<NumberValue> NumberValues { get; set; }
         public DbSet<RangeValue> RangeValues { get; set; }
         public DbSet<TextValue> TextValues { get; set; }
-
-        protected override void OnModelCreating(ModelBuilder modelBuilder)
-        {
-            modelBuilder.Entity<Device>()
-                .HasIndex(p => new { p.InventoryNumber })
-                .IsUnique(true);
-        }
     }
 }
