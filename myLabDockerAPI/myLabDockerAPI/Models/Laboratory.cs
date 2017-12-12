@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -9,5 +10,8 @@ namespace myLabDockerAPI.Models
     {
         public long Id { get; set; }
         public string Title { get; set; }
+
+        [JsonIgnore]
+        public List<Category> Categories { get; set; }
     }
 }

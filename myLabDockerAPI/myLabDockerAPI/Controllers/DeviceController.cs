@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using myLabDockerAPI.Data;
 using myLabDockerAPI.Models;
+using Microsoft.EntityFrameworkCore;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -24,7 +25,12 @@ namespace myLabDockerAPI.Controllers
         [HttpGet]
         public IEnumerable<Device> GetAll()
         {
-            return _context.Devices.ToList();
+            return _context.Devices
+                .Include(d => d.Category)
+                    .ThenInclude(c => c.Laboratory)
+                .Include(d => d.DeviceAttributes)
+                .Include(d => d.State)
+                .ToList();
         }
 
         // GET: api/device/{id}
@@ -75,7 +81,6 @@ namespace myLabDockerAPI.Controllers
             item.Location = device.Location;
             item.State = device.State;
             item.Title = device.Title;
-            item.Type = device.Type;
             item.Comment = device.Comment;
 
             _context.Devices.Update(item);

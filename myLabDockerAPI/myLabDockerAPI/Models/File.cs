@@ -13,5 +13,6 @@ namespace myLabDockerAPI.Models
         public string Path { get; set; }
 
         public Device Device { get; set; }
+        public Folder Folder { get; set; }
     }
 }

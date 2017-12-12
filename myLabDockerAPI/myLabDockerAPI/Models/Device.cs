@@ -15,9 +15,11 @@ namespace myLabDockerAPI.Models
         //[RegularExpression(@"^[A-Z]+[a-zA-Z''-'\s]*$")]
         [Required]
         public string InventoryNumber { get; set; }
-        public string Type { get; set; }
         public string Location { get; set; }
         public string Comment { get; set; }
-        public string State { get; set; }
+
+        public List<DeviceAttribute> DeviceAttributes { get; set; }
+        public Category Category { get; set; }
+        public State State { get; set; }
     }
 }

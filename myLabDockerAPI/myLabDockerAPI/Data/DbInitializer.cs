@@ -8,50 +8,49 @@ namespace myLabDockerAPI.Data
 {
     public class DbInitializer
     {
-        public static void Initialize(MyLabContext context)
+        public static void Initialize(MyLabContext ctx)
         {
-            context.Database.EnsureCreated();
+            ctx.Database.EnsureCreated();
 
-            //Look for any Devices
-            if (!context.Devices.Any())
+            //Look for any States
+            if (!ctx.States.Any())
             {
-                var devices = new Device[]
+                var states = new State[]
                 {
-                new Device{Title="Antenne",InventoryNumber="00234521", Type="Typ", Location="Raum 1", Comment="wichtige Information", State="verfügbar"},
-                new Device{Title="WLAN Antenne",InventoryNumber="00232231", Type="Typ", Location="Raum 1", Comment="wichtige Information", State="verfügbar"},
-                new Device{Title="Transformator",InventoryNumber="00546831", Type="Typ", Location="Raum 1", Comment="wichtige Information", State="verfügbar"},
-                new Device{Title="Adapter",InventoryNumber="00243861", Type="Typ", Location="Raum 1", Comment="wichtige Information", State="verfügbar"},
-                new Device{Title="Kabel",InventoryNumber="00267781", Type="Typ", Location="Raum 1", Comment="wichtige Information", State="verfügbar"},
-                new Device{Title="gedämpftes Kabel",InventoryNumber="00278981", Type="Typ", Location="Raum 1", Comment="wichtige Information", State="verfügbar"}
+                    new State{Title="verfügbar"},
+                    new State{Title="entliehen"},
+                    new State{Title="kaputt/in Reperatur"}
                 };
 
-                foreach (Device d in devices)
+                foreach (State s in states)
                 {
-                    context.Devices.Add(d);
+                    ctx.States.Add(s);
                 }
-                context.SaveChanges();
+                ctx.SaveChanges();
             }
 
-            if (!context.Laboratories.Any())
+            //Look for any Laboratory
+            if (!ctx.Laboratories.Any())
             {
                 var laboratories = new Laboratory[]
                 {
                     new Laboratory{Title="Labor 1"}
                 };
 
-                foreach(Laboratory l in laboratories)
+                foreach (Laboratory l in laboratories)
                 {
-                    context.Laboratories.Add(l);
+                    ctx.Laboratories.Add(l);
                 }
-                context.SaveChanges();
+                ctx.SaveChanges();
             }
 
-            if (!context.Categories.Any())
+            //Look for any Category
+            if (!ctx.Categories.Any())
             {
-                var lab = context.Laboratories.FirstOrDefault(d => d.Id == 1);
+                var lab = ctx.Laboratories.FirstOrDefault(d => d.Id == 1);
                 var categories = new Category[]
                 {
-                    
+
                     new Category{Title="1.Kategorie", Comment="Kommentar", IsTemplate=false, Laboratory=lab },
                     new Category{Title="2.Kategorie", Comment="Kommentar", IsTemplate=false, Laboratory=lab }
 
@@ -59,10 +58,39 @@ namespace myLabDockerAPI.Data
 
                 foreach (Category d in categories)
                 {
-                    context.Categories.Add(d);
+                    ctx.Categories.Add(d);
                 }
-                context.SaveChanges();
+                ctx.SaveChanges();
             }
+
+
+            //Look for any Devices
+            if (!ctx.Devices.Any())
+            {
+                var category = ctx.Categories.FirstOrDefault(c => c.Id == 1);
+                var category2 = ctx.Categories.FirstOrDefault(c => c.Id == 2);
+                var state1 = ctx.States.FirstOrDefault(s => s.Id == 1);
+                var state2 = ctx.States.FirstOrDefault(s => s.Id == 2);
+                var state3 = ctx.States.FirstOrDefault(s => s.Id == 3);
+
+
+                var devices = new Device[]
+                {
+                new Device{Title="Antenne",InventoryNumber="00234521", Location="Raum 1", Comment="wichtige Information", State=state1, Category=category, DeviceAttributes= new List<DeviceAttribute>{new RangeAttribute{Title="Test"} } },
+                new Device{Title="WLAN Antenne",InventoryNumber="00232231", Location="Raum 1", Comment="wichtige Information", State=state2, Category=category, DeviceAttributes= new List<DeviceAttribute>{new DeviceAttribute{Title="Test2"} }},
+                new Device{Title="Transformator",InventoryNumber="00546831", Location="Raum 1", Comment="wichtige Information", State=state1, Category=category, DeviceAttributes= new List<DeviceAttribute>{new DeviceAttribute{Title="Test3"} }},
+                new Device{Title="Adapter",InventoryNumber="00243861", Location="Raum 1", Comment="wichtige Information", State=state3, Category=category2, DeviceAttributes= new List<DeviceAttribute>{new DeviceAttribute{Title="Test4"} }},
+                new Device{Title="Kabel",InventoryNumber="00267781", Location="Raum 1", Comment="wichtige Information", State=state1, Category=category2, DeviceAttributes= new List<DeviceAttribute>{new DeviceAttribute{Title="Test5"} }},
+                new Device{Title="gedämpftes Kabel",InventoryNumber="00278981", Location="Raum 1", Comment="wichtige Information", State=state2, Category=category2, DeviceAttributes= new List<DeviceAttribute>{new DeviceAttribute{Title="Test6"} }}
+                };
+
+                foreach (Device d in devices)
+                {
+                    ctx.Devices.Add(d);
+                }
+                ctx.SaveChanges();
+            }
+
         }
     }
 }
