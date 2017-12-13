@@ -1,12 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-
-namespace myLabDockerAPI.Models
+﻿namespace myLabDockerAPI.Models
 {
-    public class TextAttribute : DeviceAttribute
+    /// <summary>
+    /// Specifies an Attribute with Text Field.
+    /// </summary>
+    public class TextAttribute : ItemAttribute
     {
+        /// <summary>
+        /// 
+        /// </summary>
         public string Text { get; set; }
 
     }

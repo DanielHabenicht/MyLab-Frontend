@@ -6,8 +6,15 @@ using System.Threading.Tasks;
 
 namespace myLabDockerAPI.Data
 {
+    /// <summary>
+    /// Class to hold everything related to seeding the Database.
+    /// </summary>
     public class DbInitializer
     {
+        /// <summary>
+        /// Initializes the Database.
+        /// </summary>
+        /// <param name="ctx"></param>
         public static void Initialize(MyLabContext ctx)
         {
             ctx.Database.EnsureCreated();
@@ -64,8 +71,8 @@ namespace myLabDockerAPI.Data
             }
 
 
-            //Look for any Devices
-            if (!ctx.Devices.Any())
+            //Look for any Items
+            if (!ctx.Items.Any())
             {
                 var category = ctx.Categories.FirstOrDefault(c => c.Id == 1);
                 var category2 = ctx.Categories.FirstOrDefault(c => c.Id == 2);
@@ -74,19 +81,19 @@ namespace myLabDockerAPI.Data
                 var state3 = ctx.States.FirstOrDefault(s => s.Id == 3);
 
 
-                var devices = new Device[]
+                var Items = new Item[]
                 {
-                new Device{Title="Antenne",InventoryNumber="00234521", Location="Raum 1", Comment="wichtige Information", State=state1, Category=category, DeviceAttributes= new List<DeviceAttribute>{new RangeAttribute{Title="Test"} } },
-                new Device{Title="WLAN Antenne",InventoryNumber="00232231", Location="Raum 1", Comment="wichtige Information", State=state2, Category=category, DeviceAttributes= new List<DeviceAttribute>{new DeviceAttribute{Title="Test2"} }},
-                new Device{Title="Transformator",InventoryNumber="00546831", Location="Raum 1", Comment="wichtige Information", State=state1, Category=category, DeviceAttributes= new List<DeviceAttribute>{new DeviceAttribute{Title="Test3"} }},
-                new Device{Title="Adapter",InventoryNumber="00243861", Location="Raum 1", Comment="wichtige Information", State=state3, Category=category2, DeviceAttributes= new List<DeviceAttribute>{new DeviceAttribute{Title="Test4"} }},
-                new Device{Title="Kabel",InventoryNumber="00267781", Location="Raum 1", Comment="wichtige Information", State=state1, Category=category2, DeviceAttributes= new List<DeviceAttribute>{new DeviceAttribute{Title="Test5"} }},
-                new Device{Title="gedämpftes Kabel",InventoryNumber="00278981", Location="Raum 1", Comment="wichtige Information", State=state2, Category=category2, DeviceAttributes= new List<DeviceAttribute>{new DeviceAttribute{Title="Test6"} }}
+                new Item{Title="Antenne",Barcode="00234521", Location="Raum 1", Comment="wichtige Information", State=state1, Category=category, ItemAttributes= new List<ItemAttribute>{new RangeAttribute{Title="Test"} } },
+                new Item{Title="WLAN Antenne",Barcode="00232231", Location="Raum 1", Comment="wichtige Information", State=state2, Category=category, ItemAttributes= new List<ItemAttribute>{new ItemAttribute{Title="Test2"} }},
+                new Item{Title="Transformator",Barcode="00546831", Location="Raum 1", Comment="wichtige Information", State=state1, Category=category, ItemAttributes= new List<ItemAttribute>{new ItemAttribute{Title="Test3"} }},
+                new Item{Title="Adapter",Barcode="00243861", Location="Raum 1", Comment="wichtige Information", State=state3, Category=category2, ItemAttributes= new List<ItemAttribute>{new ItemAttribute{Title="Test4"} }},
+                new Item{Title="Kabel",Barcode="00267781", Location="Raum 1", Comment="wichtige Information", State=state1, Category=category2, ItemAttributes= new List<ItemAttribute>{new ItemAttribute{Title="Test5"} }},
+                new Item{Title="gedämpftes Kabel",Barcode="00278981", Location="Raum 1", Comment="wichtige Information", State=state2, Category=category2, ItemAttributes= new List<ItemAttribute>{new ItemAttribute{Title="Test6"} }}
                 };
 
-                foreach (Device d in devices)
+                foreach (Item d in Items)
                 {
-                    ctx.Devices.Add(d);
+                    ctx.Items.Add(d);
                 }
                 ctx.SaveChanges();
             }

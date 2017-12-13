@@ -1,12 +1,11 @@
-﻿using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace myLabDockerAPI.Models
 {
     /// <summary>
-    /// Represents a Folder with its Properties.
+    /// Datatable for m : n Relation between Category and Item Attribute.
     /// </summary>
-    public class Folder
+    public class Relation_Category_ItemAttribute
     {
         /// <summary>
         /// 
@@ -17,11 +16,11 @@ namespace myLabDockerAPI.Models
         /// <summary>
         /// 
         /// </summary>
-        public string Title { get; set; }
+        public Category Category { get; set; }
 
         /// <summary>
         /// 
         /// </summary>
-        public List<File> Files { get; set; }
+        public ItemAttribute ItemAttribute { get; set; }
     }
 }

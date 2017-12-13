@@ -1,11 +1,13 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Newtonsoft.Json;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace myLabDockerAPI.Models
 {
     /// <summary>
-    /// Class that represents a File with its Properties.
+    /// Represents the Attribute a Item can have, with all its Properties.
     /// </summary>
-    public class File
+    public class ItemAttribute
     {
         /// <summary>
         /// 
@@ -21,17 +23,7 @@ namespace myLabDockerAPI.Models
         /// <summary>
         /// 
         /// </summary>
-        public long Size { get; set; }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        public string Path { get; set; }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        public long ItemId { get; set; }
+        public int ItemId { get; set; }
         /// <summary>
         /// 
         /// </summary>
@@ -40,10 +32,8 @@ namespace myLabDockerAPI.Models
         /// <summary>
         /// 
         /// </summary>
-        public int FolderId { get; set; }
-        /// <summary>
-        /// 
-        /// </summary>
-        public Folder Folder { get; set; }
+        [JsonIgnore]
+        public List<Relation_Category_ItemAttribute> Relation_Category_ItemAttribute { get; set; }
+
     }
 }

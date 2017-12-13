@@ -1,12 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-
-namespace myLabDockerAPI.Models
+﻿namespace myLabDockerAPI.Models
 {
-    public class NumberAttribute : DeviceAttribute
+    /// <summary>
+    /// Specifies an Attribute with Number Field.
+    /// </summary>
+    public class NumberAttribute : ItemAttribute
     {
+        /// <summary>
+        /// 
+        /// </summary>
         public float Value { get; set; }
     }
 }
