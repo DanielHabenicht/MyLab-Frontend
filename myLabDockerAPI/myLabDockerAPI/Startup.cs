@@ -81,9 +81,9 @@ namespace myLabDockerAPI
                 }
             });
             app.UseSwaggerUI(c =>
-           {
-               c.SwaggerEndpoint("/swagger/v1/swagger.json", "MyLab - API");
-           });
+            {
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "MyLab - API");
+            });
             app.UseMvcWithDefaultRoute();
             app.UseDefaultFiles();
             app.UseStaticFiles();

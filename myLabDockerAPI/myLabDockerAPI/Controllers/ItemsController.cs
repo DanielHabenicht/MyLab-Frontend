@@ -63,7 +63,7 @@ namespace myLabDockerAPI.Controllers
         [HttpGet("{id}", Name = "GetItem")]
         public IActionResult GetById([FromRoute]long id)
         {
-            var item = _context.Items.FirstOrDefault(t => t.Id == id);
+            var item = _context.Items.Include(i => i.Category).FirstOrDefault(t => t.Id == id);
             if (item == null)
             {
                 return NotFound();
@@ -88,16 +88,31 @@ namespace myLabDockerAPI.Controllers
         [ProducesResponseType(typeof(Item), 400)]
         public IActionResult Create([FromBody] Item Item)
         {
-            ModelState.Remove("Id");
             if (Item == null)
             {
-                return BadRequest();
+                return BadRequest("p");
             }
 
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
+
+            var category = _context.Categories.FirstOrDefault(l => l.Id == Item.CategoryId);
+            if(category == null)
+            {
+                return BadRequest("Category does not exist.");
+            }
+            Item.Category = category;
+
+            var state = _context.States.FirstOrDefault(s => s.Id == Item.StateId);
+            if(state == null)
+            {
+                return BadRequest("State does not exist.");
+            }
+
+
+
 
             _context.Items.Add(Item);
             _context.SaveChanges();
@@ -125,19 +140,21 @@ namespace myLabDockerAPI.Controllers
                 return BadRequest();
             }
 
-            var item = _context.Items.FirstOrDefault(d => d.Id == id);
-            if(item == null)
+            var dbItem = _context.Items.FirstOrDefault(d => d.Id == id);
+            if(dbItem == null)
             {
                 return NotFound();
             }
 
-            item.Barcode = Item.Barcode;
-            item.Location = Item.Location;
-            item.State = Item.State;
-            item.Title = Item.Title;
-            item.Comment = Item.Comment;
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
 
-            _context.Items.Update(item);
+
+            dbItem.Update(Item);
+
+            _context.Items.Update(dbItem);
             _context.SaveChanges();
             return new NoContentResult();
         }
