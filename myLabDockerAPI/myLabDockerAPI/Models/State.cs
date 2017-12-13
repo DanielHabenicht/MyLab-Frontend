@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace myLabDockerAPI.Models
 {
@@ -11,11 +12,16 @@ namespace myLabDockerAPI.Models
         /// 
         /// </summary>
         [Key]
-        public long Id { get; set; }
+        public int Id { get; set; }
 
         /// <summary>
         /// 
         /// </summary>
         public string Title { get; set; }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public List<Item> Items { get; set; }
     }
 }

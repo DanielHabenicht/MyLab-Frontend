@@ -1,6 +1,7 @@
 ﻿using Newtonsoft.Json;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace myLabDockerAPI.Models
 {
@@ -23,10 +24,12 @@ namespace myLabDockerAPI.Models
         /// <summary>
         /// 
         /// </summary>
-        public int ItemId { get; set; }
+        [Required]
+        public long ItemId { get; set; }
         /// <summary>
         /// 
         /// </summary>
+        [ForeignKey("ItemId")]
         public Item Item { get; set; }
 
         /// <summary>

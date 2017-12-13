@@ -30,6 +30,10 @@ namespace myLabDockerAPI.Models
         /// </summary>
         public bool IsTemplate { get; set; }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        public int LaboratoryId { get; set; }
         /// <summary> 
         /// The Foreign Key of the Category State.
         /// </summary>

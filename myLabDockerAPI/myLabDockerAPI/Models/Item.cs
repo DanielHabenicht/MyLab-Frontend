@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace myLabDockerAPI.Models
 {
@@ -43,14 +44,41 @@ namespace myLabDockerAPI.Models
         /// </summary>
         public List<ItemAttribute> ItemAttributes { get; set; }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        [Required]
+        public long CategoryId { get; set; }
         /// <summary> 
         /// The Foreign Key of the Item Category.
         /// </summary>
+        [ForeignKey("CategoryId")]
         public Category Category { get; set; }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        [Required]
+        public int StateId { get; set; }
         /// <summary> 
         /// The Foreign Key of the Item State.
         /// </summary>
+        [ForeignKey("StateId")]
         public State State { get; set; }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="item"></param>
+        public void Update(Item item)
+        {
+            this.Barcode = item.Barcode;
+            this.Category = item.Category;
+            this.Comment = item.Comment;
+            this.Location = item.Location;
+            this.ItemAttributes = item.ItemAttributes;
+            this.State = item.State;
+            this.Title = item.Title;
+        }
     }
 }

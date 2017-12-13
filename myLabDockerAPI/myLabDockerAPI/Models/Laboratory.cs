@@ -23,7 +23,6 @@ namespace myLabDockerAPI.Models
         /// <summary>
         /// 
         /// </summary>
-        [JsonIgnore]
         public List<Category> Categories { get; set; }
     }
 }
