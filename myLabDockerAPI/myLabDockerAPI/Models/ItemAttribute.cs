@@ -8,8 +8,15 @@ namespace myLabDockerAPI.Models
     /// <summary>
     /// Represents the Attribute a Item can have, with all its Properties.
     /// </summary>
-    public class ItemAttribute
+    public abstract class ItemAttribute
     {
+        /// <summary>
+        /// 
+        /// </summary>
+        protected ItemAttribute()
+        {
+            ///Do nothing as this class should not be instantiated.
+        }
         /// <summary>
         /// 
         /// </summary>
@@ -20,6 +27,11 @@ namespace myLabDockerAPI.Models
         /// 
         /// </summary>
         public string Title { get; set; }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        //public AttributeType Type { get; set; }
 
         /// <summary>
         /// 
@@ -38,5 +50,26 @@ namespace myLabDockerAPI.Models
         [JsonIgnore]
         public List<Relation_Category_ItemAttribute> Relation_Category_ItemAttribute { get; set; }
 
+    }
+
+    /// <summary>
+    /// Types of Attributes
+    /// </summary>
+    public enum AttributeType
+    {
+        /// <summary>
+        /// 
+        /// </summary>
+        Number = 1,
+
+        /// <summary>
+        /// 
+        /// </summary>
+        Text,
+
+        /// <summary>
+        /// 
+        /// </summary>
+        Range
     }
 }
