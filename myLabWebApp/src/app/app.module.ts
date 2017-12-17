@@ -18,14 +18,14 @@ import { CategoryComponent } from './categories/category.component';
 import { CategoriesComponent } from './categories/categories-overview.component';
 
 //Everything from Prime NG
-import { DataTableModule, SharedModule, ChipsModule, AutoCompleteModule } from 'primeng/primeng';
+import { DataTableModule, SharedModule } from 'primeng/primeng';
 import { GrowlModule } from 'primeng/primeng';
 import { MessageService } from 'primeng/components/common/messageservice';
 import { InputTextModule } from 'primeng/primeng';
 import { ButtonModule } from 'primeng/primeng';
 
 //Other NPM Packages
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { MaterializeModule } from 'angular2-materialize';
 
 @NgModule({
   declarations: [
@@ -37,6 +37,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
   ],
   imports: [
     BrowserModule,
+    MaterializeModule,
     BrowserAnimationsModule,
     AppRoutingModule,
     HttpClientModule,
@@ -46,10 +47,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     SharedModule,
     GrowlModule,
     InputTextModule,
-    ButtonModule,
-    ChipsModule,
-    AutoCompleteModule,
-    NgbModule.forRoot()
+    ButtonModule
   ],
   providers: [
     APIService,
