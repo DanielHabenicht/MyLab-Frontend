@@ -79,6 +79,13 @@ namespace myLabDockerAPI.Data
             modelBuilder.Entity<Item>()
                 .HasIndex(p => new { p.Barcode })
                 .IsUnique(true);
+
+            modelBuilder.Entity<ItemAttribute>()
+                .HasDiscriminator<int>("Type")
+                .HasValue<NumberAttribute>(1)
+                .HasValue<RangeAttribute>(2)
+                .HasValue<TextAttribute>(3);
+
         }
     }
 }

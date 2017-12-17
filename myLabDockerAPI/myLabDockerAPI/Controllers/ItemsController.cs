@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using myLabDockerAPI.Data;
 using myLabDockerAPI.Models;
 using Microsoft.EntityFrameworkCore;
+using System.Data.SqlClient;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -38,14 +39,13 @@ namespace myLabDockerAPI.Controllers
         /// </remarks>
         /// <returns>All Items</returns>
         [HttpGet]
-        public IEnumerable<Item> GetAll()
+        public async Task<IEnumerable<Item>> GetAll()
         {
-            return _context.Items
+            return await _context.Items
                 .Include(d => d.Category)
-                    .ThenInclude(c => c.Laboratory)
                 .Include(d => d.ItemAttributes)
                 .Include(d => d.State)
-                .ToList();
+                .ToListAsync();
         }
 
         /// <summary>
@@ -61,9 +61,13 @@ namespace myLabDockerAPI.Controllers
         /// <response code="201">If the Item was found.</response>
         /// <response code="404">If the Item could not be found.</response>   
         [HttpGet("{id}", Name = "GetItem")]
-        public IActionResult GetById([FromRoute]long id)
+        public async Task<IActionResult> GetById([FromRoute]long id)
         {
-            var item = _context.Items.Include(i => i.Category).FirstOrDefault(t => t.Id == id);
+            var item = await _context.Items
+                .Include(i => i.ItemAttributes)
+                .Include(i => i.Category)
+                .Include(i => i.State)
+                .FirstOrDefaultAsync(t => t.Id == id);
             if (item == null)
             {
                 return NotFound();
@@ -75,7 +79,7 @@ namespace myLabDockerAPI.Controllers
         /// Creates a new Item.
         /// </summary>
         /// <remarks>
-        /// Sample request:
+        /// POST /items
         /// 
         /// 
         /// </remarks>
@@ -86,18 +90,28 @@ namespace myLabDockerAPI.Controllers
         [HttpPost]
         [ProducesResponseType(typeof(Item), 201)]
         [ProducesResponseType(typeof(Item), 400)]
-        public IActionResult Create([FromBody] Item Item)
+        public async Task<IActionResult> Create([FromBody] Item Item)
         {
+            var newItem = new Item();
+            newItem.Update(Item);
             if (Item == null)
             {
                 return BadRequest("p");
             }
 
+            // Checks if ModelState is Valid
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
+            // Checks if Barcode does already exist.
+            if(_context.Items.FirstOrDefault(i => i.Barcode == Item.Barcode) != null)
+            {
+                return BadRequest("Barcode does already exists.");
+            }
+
+            //Checks if Category does exist.
             var category = _context.Categories.FirstOrDefault(l => l.Id == Item.CategoryId);
             if(category == null)
             {
@@ -105,17 +119,54 @@ namespace myLabDockerAPI.Controllers
             }
             Item.Category = category;
 
+            //Checks if State does exist.
             var state = _context.States.FirstOrDefault(s => s.Id == Item.StateId);
             if(state == null)
             {
                 return BadRequest("State does not exist.");
             }
 
+            //foreach (object attr in Item.ItemAttributes)
+            //{
+            //    switch (((ItemAttribute)attr).Type)
+            //    {
+            //        case AttributeType.Number:
+            //            {
+            //                var nattr = (NumberAttribute)attr;
+            //                newItem.ItemAttributes.Add(new NumberAttribute { Value = nattr.Value });
+            //                break;
+            //            }
+            //        case AttributeType.Range:
+            //            {
+            //                var rattr = (RangeAttribute)attr;
+            //                newItem.ItemAttributes.Add(new RangeAttribute { HigherValue = rattr.HigherValue, LowerValue=rattr.LowerValue });
+            //                break;
+            //            }
+            //        case AttributeType.Text:
+            //            {
+            //                var tattr = (TextAttribute)attr;
+            //                newItem.ItemAttributes.Add(new TextAttribute { Text = tattr.Text });
+            //                break;
+            //            }
+            //        default: return BadRequest("Attrbiute Type not supported.");
+            //    }
+            //}
+
+
+
+
 
 
 
             _context.Items.Add(Item);
-            _context.SaveChanges();
+            //try
+            //{
+            await _context.SaveChangesAsync();
+            //}
+            //catch (SqlException ex)
+            //{
+            //    return StatusCode(500, "Internal Server Error.");
+            //}
 
             return CreatedAtRoute("GetItem", new { id = Item.Id }, Item);
         }
@@ -133,14 +184,14 @@ namespace myLabDockerAPI.Controllers
         /// <param name="Item"></param>
         /// <returns>Nothing</returns>
         [HttpPut("{id}")]
-        public IActionResult Update([FromRoute] long id, [FromBody] Item Item)
+        public async Task<IActionResult> Update([FromRoute] long id, [FromBody] Item Item)
         {
             if (Item == null || Item.Id != id)
             {
                 return BadRequest();
             }
 
-            var dbItem = _context.Items.FirstOrDefault(d => d.Id == id);
+            var dbItem = await _context.Items.FirstOrDefaultAsync(d => d.Id == id);
             if(dbItem == null)
             {
                 return NotFound();
@@ -151,6 +202,11 @@ namespace myLabDockerAPI.Controllers
                 return BadRequest(ModelState);
             }
 
+            if (await TryUpdateModelAsync<Item>(Item))
+            {
+                await _context.SaveChangesAsync();
+                return CreatedAtRoute("GetItem", new { id = Item.Id }, Item);
+            }
 
             dbItem.Update(Item);
 

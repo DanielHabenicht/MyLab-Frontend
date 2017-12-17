@@ -84,11 +84,11 @@ namespace myLabDockerAPI.Data
                 var Items = new Item[]
                 {
                 new Item{Title="Antenne",Barcode="00234521", Location="Raum 1", Comment="wichtige Information", State=state1, Category=category, ItemAttributes= new List<ItemAttribute>{new RangeAttribute{Title="Test"} } },
-                new Item{Title="WLAN Antenne",Barcode="00232231", Location="Raum 1", Comment="wichtige Information", State=state2, Category=category, ItemAttributes= new List<ItemAttribute>{new ItemAttribute{Title="Test2"} }},
-                new Item{Title="Transformator",Barcode="00546831", Location="Raum 1", Comment="wichtige Information", State=state1, Category=category, ItemAttributes= new List<ItemAttribute>{new ItemAttribute{Title="Test3"} }},
-                new Item{Title="Adapter",Barcode="00243861", Location="Raum 1", Comment="wichtige Information", State=state3, Category=category2, ItemAttributes= new List<ItemAttribute>{new ItemAttribute{Title="Test4"} }},
-                new Item{Title="Kabel",Barcode="00267781", Location="Raum 1", Comment="wichtige Information", State=state1, Category=category2, ItemAttributes= new List<ItemAttribute>{new ItemAttribute{Title="Test5"} }},
-                new Item{Title="gedämpftes Kabel",Barcode="00278981", Location="Raum 1", Comment="wichtige Information", State=state2, Category=category2, ItemAttributes= new List<ItemAttribute>{new ItemAttribute{Title="Test6"} }}
+                new Item{Title="WLAN Antenne",Barcode="00232231", Location="Raum 1", Comment="wichtige Information", State=state2, Category=category, ItemAttributes= new List<ItemAttribute>{new TextAttribute{Title="Test2"} }},
+                new Item{Title="Transformator",Barcode="00546831", Location="Raum 1", Comment="wichtige Information", State=state1, Category=category, ItemAttributes= new List<ItemAttribute>{new TextAttribute{Title="Test3"} }},
+                new Item{Title="Adapter",Barcode="00243861", Location="Raum 1", Comment="wichtige Information", State=state3, Category=category2, ItemAttributes= new List<ItemAttribute>{new NumberAttribute{Title="Test4"} }},
+                new Item{Title="Kabel",Barcode="00267781", Location="Raum 1", Comment="wichtige Information", State=state1, Category=category2, ItemAttributes= new List<ItemAttribute>{new NumberAttribute{Title="Test5"} }},
+                new Item{Title="gedämpftes Kabel",Barcode="00278981", Location="Raum 1", Comment="wichtige Information", State=state2, Category=category2, ItemAttributes= new List<ItemAttribute>{new NumberAttribute{Title="Test6"} }}
                 };
 
                 foreach (Item d in Items)

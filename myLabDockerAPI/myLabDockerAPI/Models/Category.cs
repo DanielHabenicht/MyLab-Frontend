@@ -1,6 +1,7 @@
 ﻿using Newtonsoft.Json;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace myLabDockerAPI.Models
 {
@@ -33,10 +34,12 @@ namespace myLabDockerAPI.Models
         /// <summary>
         /// 
         /// </summary>
-        public int LaboratoryId { get; set; }
+        [Required]
+        public long LaboratoryId { get; set; }
         /// <summary> 
         /// The Foreign Key of the Category State.
         /// </summary>
+        [ForeignKey("LaboratoryId")]
         public Laboratory Laboratory { get; set; }
 
         /// <summary> 
