@@ -25,7 +25,7 @@ import { InputTextModule } from 'primeng/primeng';
 import { ButtonModule } from 'primeng/primeng';
 
 //Other NPM Packages
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { MaterializeModule } from 'angular2-materialize';
 
 @NgModule({
   declarations: [
@@ -37,6 +37,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
   ],
   imports: [
     BrowserModule,
+    MaterializeModule,
     BrowserAnimationsModule,
     AppRoutingModule,
     HttpClientModule,
@@ -46,8 +47,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     SharedModule,
     GrowlModule,
     InputTextModule,
-    ButtonModule,
-    NgbModule.forRoot()
+    ButtonModule
   ],
   providers: [
     APIService,
