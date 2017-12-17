@@ -1,8 +1,10 @@
-<div [ngSwitch]="multiselect">
+<div class="container" [ngSwitch]="multiselect">
   <input #search type="text" placeholder="Search">
+
   <ng-template [ngSwitchCase]="true">
     <p-dataTable [value]="devices" [rows]="20" [paginator]="isPaging()" [sortMode]="'multiple'" [(selection)]="selectedDevices"
-      dataKey="id" [loading]="loading" loadingIcon="fa-spinner" [globalFilter]="search" [resizableColumns]="true" #dt>
+      dataKey="id" [loading]="loading" loadingIcon="fa-spinner" [globalFilter]="search" [resizableColumns]="true" styleClass="test"
+      #dt>
       <p-column selectionMode="multiple"></p-column>
       <p-column field="id" header="Id" sortable="true"></p-column>
       <p-column field="inventoryNumber" header="Inventarnummer" sortable="true"></p-column>
@@ -16,6 +18,7 @@
     </p-dataTable>
     <button type="button" pButton icon="fa-file-o" iconPos="left" label="CSV" (click)="dt.exportCSV({selectionOnly:true})"></button>
   </ng-template>
+
   <ng-template [ngSwitchCase]="false">
     <p-dataTable [value]="devices" [rows]="20" [paginator]="isPaging()" [sortMode]="'multiple'" [loading]="loading" loadingIcon="fa-spinner"
       [globalFilter]="search" [resizableColumns]="true" (onRowClick)="onRowClick($event)" #dt>
@@ -31,5 +34,10 @@
     </p-dataTable>
     <button type="button" pButton icon="fa-file-o" iconPos="left" label="CSV" (click)="dt.exportCSV()"></button>
   </ng-template>
+  <button materialize pButton type="button" (click)="toggleMultiselect()" label="Bulk Mode"></button>
 </div>
-<button pButton type="button" (click)="toggleMultiselect()" label="Bulk Mode"></button>
+<div class="fixed-action-btn">
+  <a class="btn-floating btn-large red" routerLink="/device">
+    <i class="large material-icons">add</i>
+  </a>
+</div>
