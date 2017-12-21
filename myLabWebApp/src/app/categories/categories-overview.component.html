@@ -1,8 +1,13 @@
 <p-dataTable #dt [value]="categories" (onRowClick)="onRowClick($event)">
   <p-column field="id" header="Id"></p-column>
-  <p-column field="name" header="Name"></p-column>
+  <p-column field="title" header="Name"></p-column>
   <p-column field="comment" header="Kommentar"></p-column>
   <p-column field="deviceCount" header="Anzahl"></p-column>
 
 </p-dataTable>
 <button type="button" pButton icon="fa-file-o" iconPos="left" label="CSV" (click)="dt.exportCSV()"></button>
+<div class="fixed-action-btn">
+  <a class="btn-floating btn-large red" routerLink="/category">
+    <i class="large material-icons">add</i>
+  </a>
+</div>

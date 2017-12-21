@@ -12,8 +12,15 @@ using myLabDockerAPI.Data;
 
 namespace myLabDockerAPI
 {
+    /// <summary>
+    /// The API.
+    /// </summary>
     public class Program
     {
+        /// <summary>
+        /// Main Function
+        /// </summary>
+        /// <param name="args"></param>
         public static void Main(string[] args)
         {
             var host = BuildWebHost(args);
@@ -37,6 +44,11 @@ namespace myLabDockerAPI
             host.Run();
         }
 
+        /// <summary>
+        /// ...
+        /// </summary>
+        /// <param name="args"></param>
+        /// <returns></returns>
         public static IWebHost BuildWebHost(string[] args) =>
             WebHost.CreateDefaultBuilder(args)
                 .UseStartup<Startup>()

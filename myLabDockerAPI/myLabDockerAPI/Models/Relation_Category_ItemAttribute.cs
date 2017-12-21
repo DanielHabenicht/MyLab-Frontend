@@ -3,9 +3,9 @@
 namespace myLabDockerAPI.Models
 {
     /// <summary>
-    /// The Datatypes specified.
+    /// Datatable for m : n Relation between Category and Item Attribute.
     /// </summary>
-    public class Datatype
+    public class Relation_Category_ItemAttribute
     {
         /// <summary>
         /// 
@@ -16,6 +16,11 @@ namespace myLabDockerAPI.Models
         /// <summary>
         /// 
         /// </summary>
-        public string Title { get; set; }
-}
+        public Category Category { get; set; }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public ItemAttribute ItemAttribute { get; set; }
+    }
 }

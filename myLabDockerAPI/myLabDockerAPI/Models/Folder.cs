@@ -1,11 +1,12 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace myLabDockerAPI.Models
 {
     /// <summary>
-    /// The Datatypes specified.
+    /// Represents a Folder with its Properties.
     /// </summary>
-    public class Datatype
+    public class Folder
     {
         /// <summary>
         /// 
@@ -17,5 +18,10 @@ namespace myLabDockerAPI.Models
         /// 
         /// </summary>
         public string Title { get; set; }
-}
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public List<File> Files { get; set; }
+    }
 }
