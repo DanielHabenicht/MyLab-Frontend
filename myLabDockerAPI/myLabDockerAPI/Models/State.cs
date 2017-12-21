@@ -5,15 +5,15 @@ using System.ComponentModel.DataAnnotations;
 namespace myLabDockerAPI.Models
 {
     /// <summary>
-    /// Represents a Laboratory with all its Properties
+    /// Defines the States of a Item.
     /// </summary>
-    public class Laboratory
+    public class State
     {
         /// <summary>
         /// 
         /// </summary>
         [Key]
-        public long Id { get; set; }
+        public int Id { get; set; }
 
         /// <summary>
         /// 
@@ -23,6 +23,7 @@ namespace myLabDockerAPI.Models
         /// <summary>
         /// 
         /// </summary>
-        public List<Category> Categories { get; set; }
+        [JsonIgnore]
+        public List<Item> Items { get; set; }
     }
 }

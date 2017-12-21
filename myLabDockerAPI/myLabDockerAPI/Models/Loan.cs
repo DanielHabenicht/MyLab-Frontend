@@ -1,28 +1,33 @@
-﻿using Newtonsoft.Json;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+using System.Linq;
+using System.Threading.Tasks;
 
 namespace myLabDockerAPI.Models
 {
     /// <summary>
-    /// Represents a Laboratory with all its Properties
+    /// 
     /// </summary>
-    public class Laboratory
+    public class Loan
     {
         /// <summary>
         /// 
         /// </summary>
-        [Key]
         public long Id { get; set; }
 
         /// <summary>
         /// 
         /// </summary>
-        public string Title { get; set; }
+        [Column(TypeName = "datetime2")]
+        [Timestamp]
+        public DateTime From { get; set; }
 
         /// <summary>
         /// 
         /// </summary>
-        public List<Category> Categories { get; set; }
+        public DateTime To { get; set; }
+
     }
 }
