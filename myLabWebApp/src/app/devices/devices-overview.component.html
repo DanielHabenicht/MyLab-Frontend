@@ -1,6 +1,6 @@
-<div class="container" [ngSwitch]="multiselect">
-  <input #search type="text" placeholder="Search">
-
+<div [ngSwitch]="multiselect" class="container">
+  <input #search type="text" placeholder="Suche">
+  <p-chips [(ngModel)]="chips"></p-chips>
   <ng-template [ngSwitchCase]="true">
     <p-dataTable [value]="devices" [rows]="20" [paginator]="isPaging()" [sortMode]="'multiple'" [(selection)]="selectedDevices"
       dataKey="id" [loading]="loading" loadingIcon="fa-spinner" [globalFilter]="search" [resizableColumns]="true" styleClass="test"

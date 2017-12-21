@@ -6,11 +6,12 @@ import { DEVICES } from '../mocks/devices.mock';
 import { Router } from '@angular/router';
 import { APIService } from '../services/api.service';
 import { Event } from '@angular/router/src/events';
+import { DataTableModule,SharedModule } from 'primeng/primeng';
 
 @Component({
   selector: 'devices-overview',
   templateUrl: './devices-overview.component.html',
-  styleUrls: ['./devices-overview.component.scss'],
+  styleUrls: ['./devices-overview.component.scss'], 
   encapsulation: ViewEncapsulation.None
 })
 export class DevicesOverviewComponent {
@@ -19,6 +20,7 @@ export class DevicesOverviewComponent {
   public selectedDevices: Device[];
   public loading: boolean = true;
   public multiselect: boolean = false;
+  public chips: string[] = new Array(); 
 
   constructor(
     private apiService: APIService,
@@ -60,4 +62,5 @@ export class DevicesOverviewComponent {
   public toggleMultiselect() {
     this.multiselect = !this.multiselect;
   }
+
 }

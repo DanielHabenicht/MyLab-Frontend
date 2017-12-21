@@ -23,6 +23,8 @@ import { GrowlModule } from 'primeng/primeng';
 import { MessageService } from 'primeng/components/common/messageservice';
 import { InputTextModule } from 'primeng/primeng';
 import { ButtonModule } from 'primeng/primeng';
+import { ChipsModule } from 'primeng/primeng';
+
 
 //Other NPM Packages
 import { MaterializeModule } from 'angular2-materialize';
@@ -47,7 +49,8 @@ import { MaterializeModule } from 'angular2-materialize';
     SharedModule,
     GrowlModule,
     InputTextModule,
-    ButtonModule
+    ButtonModule,
+    ChipsModule
   ],
   providers: [
     APIService,
