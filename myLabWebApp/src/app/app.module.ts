@@ -50,9 +50,7 @@ import { MaterializeModule } from 'angular2-materialize';
     GrowlModule,
     InputTextModule,
     ButtonModule,
-    ChipsModule,
-    NgbModule.forRoot()
-
+    ChipsModule
   ],
   providers: [
     APIService,
