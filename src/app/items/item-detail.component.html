@@ -5,6 +5,7 @@
   <h4 *ngIf="item.id == -1">
     item neu anlegen:
   </h4>
+  <ngx-barcode [bc-value]="item.inventoryNumber" [bc-display-value]="true"></ngx-barcode>
   <div class="input-field">
     <input id="float-input" type="text" size="30" [(ngModel)]="item.title" pInputText>
     <label for="float-input" [ngClass]="{'active': item?.title}">Name</label>

@@ -27,6 +27,7 @@ import { ChipsModule } from 'primeng/primeng';
 
 //Other NPM Packages
 import { MaterializeModule } from 'angular2-materialize';
+import { NgxBarcodeModule } from 'ngx-barcode';
 
 @NgModule({
   declarations: [
@@ -39,6 +40,7 @@ import { MaterializeModule } from 'angular2-materialize';
   imports: [
     BrowserModule,
     MaterializeModule,
+    NgxBarcodeModule,
     BrowserAnimationsModule,
     AppRoutingModule,
     HttpClientModule,
