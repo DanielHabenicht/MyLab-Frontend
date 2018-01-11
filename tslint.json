@@ -51,7 +51,7 @@
     "label-position": true,
     "linebreak-style": [
       true,
-      "LF"
+      "CRLF"
     ],
     "max-classes-per-file": [
       false
@@ -251,7 +251,7 @@
     "restrict-plus-operands": false,
     "semicolon": [
       true,
-      "ignore-bound-class-methods"
+      "always"
     ],
     "space-before-function-paren": false,
     "strict-boolean-expressions": false,
