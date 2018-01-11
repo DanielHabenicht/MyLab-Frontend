@@ -12,8 +12,8 @@ import { BaseRestService } from './services/baseRest.service';
 import { APIService } from './services/api.service';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { DeviceDetailComponent } from './devices/device-detail.component';
-import { DevicesOverviewComponent } from './devices/devices-overview.component';
+import { ItemDetailComponent } from './items/item-detail.component';
+import { ItemsOverviewComponent } from './items/items-overview.component';
 import { CategoryComponent } from './categories/category.component';
 import { CategoriesComponent } from './categories/categories-overview.component';
 
@@ -25,15 +25,14 @@ import { InputTextModule } from 'primeng/primeng';
 import { ButtonModule } from 'primeng/primeng';
 import { ChipsModule } from 'primeng/primeng';
 
-
 //Other NPM Packages
 import { MaterializeModule } from 'angular2-materialize';
 
 @NgModule({
   declarations: [
     AppComponent,
-    DevicesOverviewComponent,
-    DeviceDetailComponent,
+    ItemsOverviewComponent,
+    ItemDetailComponent,
     CategoryComponent,
     CategoriesComponent
   ],

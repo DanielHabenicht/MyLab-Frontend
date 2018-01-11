@@ -2,7 +2,7 @@ import { Component, HostListener } from '@angular/core';
 import { Router } from '@angular/router';
 import { Message } from 'primeng/primeng';
 import { APIService } from './services/api.service';
-import { Device } from './common/classes/device.class';
+import { Item } from './common/classes/item.class';
 
 @Component({
   selector: 'app-root',
@@ -32,7 +32,7 @@ export class AppComponent {
 
   public searchstring: string = '';
 
-  public devices: Device[] = new Array();
+  public devices: Item[] = new Array();
 
   public msgs: Message[] = [];
 
@@ -41,7 +41,7 @@ export class AppComponent {
     private apiService: APIService
 
   ) {
-    this.apiService.getDevices().subscribe(devices => {
+    this.apiService.getItems().subscribe(devices => {
       this.devices = devices;
     });
 

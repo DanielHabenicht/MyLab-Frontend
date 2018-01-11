@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Device } from '../common/classes/device.class';
+import { Item } from '../common/classes/item.class';
 import { DEVICES } from '../mocks/devices.mock';
 import 'rxjs/add/operator/switchMap';
 import { APIService } from '../services/api.service';
@@ -8,13 +8,13 @@ import { Observable } from 'rxjs/Observable';
 import { Location } from '@angular/common';
 
 @Component({
-  selector: 'device-detail',
-  templateUrl: './device-detail.component.html',
-  styleUrls: ['./device-detail.component.scss']
+  selector: 'item-detail',
+  templateUrl: './item-detail.component.html',
+  styleUrls: ['./item-detail.component.scss']
 })
-export class DeviceDetailComponent {
+export class ItemDetailComponent {
 
-  public device: Device;
+  public item: Item;
 
   constructor(
     private apiService: APIService,
@@ -25,28 +25,28 @@ export class DeviceDetailComponent {
   }
   public ngOnInit() {
     this.route.paramMap.switchMap((params: ParamMap) =>
-      this.apiService.getDevice(Number.parseInt(params.get('id') || '')))
-      .subscribe(device => {
-        if (device != null) {
-          this.device = device;
+      this.apiService.getItem(Number.parseInt(params.get('id') || '')))
+      .subscribe(item => {
+        if (item != null) {
+          this.item = item;
         } else {
-          this.device = new Device(-1, '', 0, '', '', '', '');
+          this.item = new Item(-1, '', 0, '', '', '', '');
         }
       });
   }
 
   public save() {
-    this.apiService.updateDevice(this.device);
+    this.apiService.updateItem(this.item);
     this.location.back();
   }
 
   public delete() {
-    this.apiService.deleteDevice(this.device);
+    this.apiService.deleteItem(this.item);
     this.location.back();
   }
 
   public saveNew() {
-    this.apiService.addDevice(this.device);
+    this.apiService.addItem(this.item);
     this.location.back();
   }
 

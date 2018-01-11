@@ -1,4 +1,4 @@
-export class Device {
+export class Item {
   public readonly id: number;
   public title: string;
   public inventoryNumber: number;
