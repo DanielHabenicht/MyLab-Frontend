@@ -32,4 +32,16 @@ export class CategoryComponent {
       });
   }
 
+  public save() {
+    return null;
+  }
+
+  public delete() {
+    return null;
+  }
+
+  public saveNew() {
+    return null;
+  }
+
 }
