@@ -18,7 +18,8 @@ export class Item {
   ) {
     this.id = id;
     this.title = title;
-    (this.inventoryNumber = inventoryNumber), (this.type = type);
+    this.inventoryNumber = inventoryNumber,
+      this.type = type;
     this.location = location;
     this.comment = comment;
     this.state = state;
