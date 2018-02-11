@@ -5,7 +5,8 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve --proxy-config proxy.config.json --aot",
-    "start-work": "ng serve --proxy-config proxy.config.json --aot --output-path dist/",
+    "start-work":
+      "ng serve --proxy-config proxy.config.json --aot --output-path dist/",
     "build": "ng build --prod",
     "build-prod": "ng build --prod --build-optimizer --output-path dist/ ",
     "test": "ng test",
@@ -36,6 +37,7 @@
     "zone.js": "^0.8.14"
   },
   "devDependencies": {
+    "tslint-sonarts": "^1.4.0",
     "@angular/cli": "^1.6.4",
     "@angular/compiler-cli": "^5.2.0",
     "@angular/language-service": "^5.2.0",
