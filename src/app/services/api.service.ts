@@ -32,10 +32,11 @@ export class APIService {
     // if (this.items != null) {
     //   return this.items;
     // }
-    // const obs = this.baseRestService.getApiRequest('/item').publishReplay();
+    // const obs = this.baseRestService.getApiRequest('/items').publishReplay();
     // obs.connect();
     // this.items = obs;
     // return obs;
+
     return Observable.of(DEVICES);
   }
 
