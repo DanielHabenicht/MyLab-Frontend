@@ -13,24 +13,20 @@ import { Location } from '@angular/common';
   styleUrls: ['./item-detail.component.scss']
 })
 export class ItemDetailComponent {
-
-  public item: Item;
+  public item: Item = new Item(-1, '', '', '', '', '', '', '');
 
   constructor(
     private apiService: APIService,
     private route: ActivatedRoute,
     private location: Location
   ) {
-
-  }
-  public ngOnInit() {
-    this.route.paramMap.switchMap((params: ParamMap) =>
-      this.apiService.getItem(Number.parseInt(params.get('id') || '')))
+    this.route.paramMap
+      .switchMap((params: ParamMap) =>
+        this.apiService.getItem(Number.parseInt(params.get('id') || ''))
+      )
       .subscribe(item => {
         if (item != null) {
           this.item = item;
-        } else {
-          this.item = new Item(-1, '', 0, '', '', '', '');
         }
       });
   }
@@ -49,5 +45,4 @@ export class ItemDetailComponent {
     this.apiService.addItem(this.item);
     this.location.back();
   }
-
 }

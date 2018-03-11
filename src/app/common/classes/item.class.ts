@@ -1,8 +1,8 @@
 export class Item {
   public readonly id: number;
   public title: string;
-  public inventoryNumber: number;
-  public type: string;
+  public barcode: string;
+  public barcodeType: string;
   public location: string;
   public comment: string;
   public state: string;
@@ -10,7 +10,8 @@ export class Item {
   constructor(
     id: number,
     title: string,
-    inventoryNumber: number,
+    barcode: string,
+    barcodeType: string,
     type: string,
     location: string,
     comment: string = '',
@@ -18,9 +19,8 @@ export class Item {
   ) {
     this.id = id;
     this.title = title;
-    this.inventoryNumber = inventoryNumber,
-      this.type = type;
-    this.location = location;
+    this.barcode = barcode;
+    (this.barcodeType = barcodeType), (this.location = location);
     this.comment = comment;
     this.state = state;
   }
